@@ -1,0 +1,10 @@
+{
+    "mdtohtml": {
+        "label": {
+            "name": "Name",
+            "infield":"Input Field",
+            "outfield": "Output Field"
+        },
+        "mdtohtml": "md to html"
+    }
+}

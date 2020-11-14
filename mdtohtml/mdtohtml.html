@@ -1,0 +1,75 @@
+<script type="text/html" data-template-name="mdtohtml">
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="mdtohtml.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]mdtohtml.label.name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-infield"><i class="fa fa-ellipsis-h"></i> <span data-i18n="mdtohtml.label.infield"></span></label>
+        <input type="text" id="node-input-infield" placeholder="payload" style="width:250px;">
+        <input type="hidden" id="node-input-infieldType">
+    </div>
+    <div class="form-row">
+        <label for="node-input-outfield"><i class="fa fa-ellipsis-h"></i> <span data-i18n="mdtohtml.label.outfield"></span></label>
+        <input type="text" id="node-input-outfield" placeholder="payload" style="width:250px;">
+        <input type="hidden" id="node-input-outfieldType">
+    </div>
+</script>
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('mdtohtml',{
+        color:"rgb(243, 181, 103)",
+        category: 'parser',
+        defaults: {
+            name: {value:""},
+            infield: {value:"payload", validate:RED.validators.typedInput("infieldType")},
+            outfield: {value:"payload", validate:RED.validators.typedInput("outfieldType")},
+            infieldType: {value:"msg"},
+            outfieldType: {value:"msg"},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "template.svg",
+        label: function() {
+            return this.name||this._("mdtohtml.mdtohtml");;
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        },
+        oneditprepare: function() {
+            var that = this;
+            if (!this.infield) {
+                this.infield = 'payload';
+                $("#node-input-infield").val("payload");
+            }
+
+            if (!this.infieldType) {
+                this.infieldType = 'msg';
+            }
+            if (!this.outfield) {
+                this.outfield = 'payload';
+                $("#node-input-outfield").val("payload");
+            }
+            if (!this.outfieldType) {
+                this.outfieldType = 'msg';
+            }
+
+           
+            $("#node-input-infield").typedInput({
+                default: 'msg',
+                types: ['msg','flow','global'],
+                typeField: $("#node-input-infieldType")
+            });
+
+            $("#node-input-outfield").typedInput({
+                default: 'msg',
+                types: ['msg','flow','global'],
+                typeField: $("#node-input-outfieldType")
+            });
+
+            
+        }
+        
+    });
+</script>
