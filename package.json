@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-mdtohtml",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This is a NodeRed Node that is able to make translation between md contain in the msg.<input> and translate it into html inside msg.<output> using marked ",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
