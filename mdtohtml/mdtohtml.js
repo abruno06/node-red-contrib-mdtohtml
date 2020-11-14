@@ -10,11 +10,11 @@ module.exports = function (RED) {
         },
         pedantic: false,
         gfm: true,
-        breaks: false,
+        breaks: true,
         sanitize: false,
         smartLists: true,
         smartypants: false,
-        xhtml: false
+        xhtml: true
       });
      
       const createDOMPurify = require('dompurify');
